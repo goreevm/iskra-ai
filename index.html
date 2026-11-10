@@ -56,13 +56,13 @@
             padding: 0 24px;
         }
 
-        /* Header с неоновой размытой подложкой */
+        /* Header с твоим логотипом */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(25, 25, 39, 0.85);
+            background: rgba(25, 25, 39, 0.9);
             backdrop-filter: blur(16px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-dark);
@@ -72,62 +72,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 85px;
+            height: 90px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(121, 91, 255, 0.4));
+            transition: transform 0.3s ease;
         }
 
-        .logo-mark {
-            position: relative;
-            font-weight: 800;
-            font-size: 26px;
-            letter-spacing: -1px;
-            color: var(--accent-lavender);
-            background: linear-gradient(135deg, #fff 20%, var(--accent-lavender) 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Имитация искры-звёздочки из брендбука */
-        .logo-mark::after {
-            content: '✨';
-            position: absolute;
-            top: -8px;
-            right: -14px;
-            font-size: 14px;
-            filter: drop-shadow(0 0 8px var(--accent-lime));
-        }
-
-        .logo-text-group {
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid var(--border-dark);
-            padding-left: 14px;
-        }
-
-        .logo-title {
-            font-weight: 800;
-            font-size: 17px;
-            letter-spacing: 0.5px;
-            color: #fff;
-            line-height: 1.1;
-        }
-
-        .logo-title span {
-            color: var(--accent-purple);
-        }
-
-        .logo-subtitle {
-            font-size: 9px;
-            font-weight: 600;
-            color: var(--text-muted-dark);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 2px;
+        .logo-img:hover {
+            transform: scale(1.03);
         }
 
         nav ul {
@@ -183,27 +140,15 @@
             background: rgba(121, 91, 255, 0.1);
         }
 
-        /* Hero Section с неоновыми волнами */
+        /* Hero Section */
         .hero {
-            padding: 190px 0 130px;
+            padding: 200px 0 130px;
             position: relative;
             background: 
                 radial-gradient(circle at 85% 15%, rgba(121, 91, 255, 0.35) 0%, transparent 45%),
                 radial-gradient(circle at 10% 75%, rgba(183, 165, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 90%, rgba(200, 243, 107, 0.08) 0%, transparent 50%),
                 var(--bg-dark);
             overflow: hidden;
-        }
-
-        /* Дополнительные световые волны на фоне */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800"><path fill="none" stroke="rgba(121,91,255,0.15)" stroke-width="2" d="M-100,200 C300,400 600,0 900,300 C1200,600 1400,100 1500,200"/></svg>');
-            background-size: cover;
-            opacity: 0.6;
-            pointer-events: none;
         }
 
         .hero-grid {
@@ -255,7 +200,6 @@
             align-items: center;
             text-align: center;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
         }
 
         .hero-visual::before {
@@ -313,7 +257,7 @@
             letter-spacing: -1px;
         }
 
-        /* LIGHT SECTION (Молочный контрастный блок со светлым фоном) */
+        /* LIGHT SECTION */
         .section-light {
             background-color: var(--bg-light);
             color: var(--text-dark);
@@ -353,7 +297,6 @@
         .section-light .package-card.featured {
             background: linear-gradient(180deg, rgba(121, 91, 255, 0.08) 0%, #FFFFFF 100%);
             border-color: var(--accent-purple);
-            box-shadow: 0 15px 40px rgba(121, 91, 255, 0.12);
         }
 
         .section-light .portfolio-img-placeholder {
@@ -365,7 +308,7 @@
             color: rgba(121, 91, 255, 0.2);
         }
 
-        /* DARK SECTION (Глубокий графит) */
+        /* DARK SECTION */
         .section-dark {
             background-color: var(--bg-dark);
             color: var(--text-light);
@@ -641,11 +584,7 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <div class="logo-mark">IA</div>
-                <div class="logo-text-group">
-                    <div class="logo-title">ИСКРА <span>AI</span></div>
-                    <div class="logo-subtitle">Creative Studio</div>
-                </div>
+                <img src="logo.png" alt="ИСКРА AI" class="logo-img">
             </a>
             <nav>
                 <ul>
