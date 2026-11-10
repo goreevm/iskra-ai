@@ -56,7 +56,7 @@
             padding: 0 24px;
         }
 
-        /* Header (Логотип кодом) */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -78,41 +78,29 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            transition: transform 0.3s ease;
+            /* Убрали gap, так как отступ теперь в картинке */
         }
         
-        .logo:hover {
-            transform: scale(1.02);
+        /* Стили для нового логотипа в шапке (по ТЗ) */
+        .header__logo-img {
+            height: 38px; /* Чуть увеличила, чтобы металлическая текстура смотрелась лучше */
+            width: auto;
+            object-fit: contain;
+            margin-right: 12px; /* Отступ до текста "ИСКРА AI" */
+            filter: drop-shadow(0px 0px 8px rgba(162, 89, 255, 0.3)); /* Легкое фирменное свечение */
+            transition: transform 0.2s ease;
         }
 
-        .logo-icon {
-            position: relative;
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #795BFF, #B7A5FF);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 20px;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(121, 91, 255, 0.5);
-        }
-
-        .logo-icon::after {
-            content: '✨';
-            position: absolute;
-            top: -6px;
-            right: -8px;
-            font-size: 14px;
-            filter: drop-shadow(0 0 6px var(--accent-lime));
+        /* Эффект при наведении на логотип */
+        .logo:hover .header__logo-img {
+            transform: scale(1.05);
         }
 
         .logo-text-wrap {
             display: flex;
             flex-direction: column;
+            border-left: 1px solid var(--border-dark); /* Возвращаем разделитель для красоты */
+            padding-left: 14px;
         }
 
         .logo-title {
@@ -281,10 +269,10 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- УТОЛЩЕННЫЕ БЕГУЩИЕ ВОЛНЫ --- */
+        /* --- БЕГУЩИЕ ВОЛНЫ --- */
         .wave-divider {
             width: 100%;
-            height: 70px; /* Увеличили высоту блока для более толстых волн */
+            height: 70px;
             background-color: var(--bg-dark);
             border-top: 1px solid var(--border-dark);
             border-bottom: 1px solid var(--border-dark);
@@ -295,7 +283,6 @@
             z-index: 10;
         }
 
-        /* Фиолетовая волна */
         .wave-line-1 {
             position: absolute;
             left: 0;
@@ -307,7 +294,6 @@
             filter: drop-shadow(0 0 8px #795BFF);
         }
 
-        /* Лаймовая волна */
         .wave-line-2 {
             position: absolute;
             left: 0;
@@ -666,7 +652,8 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <div class="logo-icon">IA</div>
+                <!-- Вставляем новый логотип в левый верхний угол -->
+                <img src="header-logo.png" alt="IA" class="header__logo-img">
                 <div class="logo-text-wrap">
                     <div class="logo-title">ИСКРА <span>AI</span></div>
                     <div class="logo-subtitle">Creative Studio</div>
@@ -700,7 +687,6 @@
             </div>
             
             <div class="hero-card-wrapper">
-                <!-- Вставляем фото девушки в неоновых очках -->
                 <img src="girl-glasses.jpg" alt="ИСКРА AI Creative Studio" class="hero-custom-card">
             </div>
         </div>
