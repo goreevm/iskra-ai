@@ -56,13 +56,13 @@
             padding: 0 24px;
         }
 
-        /* Header */
+        /* Header (Логотип кодом) */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(25, 25, 39, 0.9);
+            background: rgba(25, 25, 39, 0.85);
             backdrop-filter: blur(16px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-dark);
@@ -281,10 +281,10 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- БЕГУЩИЕ ВОЛНЫ МЕЖДУ СЕКЦИЯМИ --- */
+        /* --- УТОЛЩЕННЫЕ БЕГУЩИЕ ВОЛНЫ --- */
         .wave-divider {
             width: 100%;
-            height: 50px;
+            height: 70px; /* Увеличили высоту блока для более толстых волн */
             background-color: var(--bg-dark);
             border-top: 1px solid var(--border-dark);
             border-bottom: 1px solid var(--border-dark);
@@ -301,23 +301,23 @@
             left: 0;
             width: 200%;
             height: 100%;
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q100,50 200,25 T400,25' fill='none' stroke='%23795BFF' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 70' preserveAspectRatio='none'%3E%3Cpath d='M0,35 Q100,70 200,35 T400,35' fill='none' stroke='%23795BFF' stroke-width='4'/%3E%3C/svg%3E") repeat-x;
             background-size: 400px 100%;
             animation: runWave 4s linear infinite;
-            filter: drop-shadow(0 0 6px #795BFF);
+            filter: drop-shadow(0 0 8px #795BFF);
         }
 
-        /* Лаймовая волна (в противофазе) */
+        /* Лаймовая волна */
         .wave-line-2 {
             position: absolute;
             left: 0;
             width: 200%;
             height: 100%;
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q100,0 200,25 T400,25' fill='none' stroke='%23C8F36B' stroke-width='1.5'/%3E%3C/svg%3E") repeat-x;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 70' preserveAspectRatio='none'%3E%3Cpath d='M0,35 Q100,0 200,35 T400,35' fill='none' stroke='%23C8F36B' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
             background-size: 400px 100%;
             animation: runWave 5s linear infinite reverse;
-            filter: drop-shadow(0 0 6px #C8F36B);
-            opacity: 0.7;
+            filter: drop-shadow(0 0 8px #C8F36B);
+            opacity: 0.8;
         }
 
         @keyframes runWave {
@@ -700,7 +700,8 @@
             </div>
             
             <div class="hero-card-wrapper">
-                <img src="card-image.jpg" alt="ИСКРА AI Creative Studio" class="hero-custom-card">
+                <!-- Вставляем фото девушки в неоновых очках -->
+                <img src="girl-glasses.jpg" alt="ИСКРА AI Creative Studio" class="hero-custom-card">
             </div>
         </div>
     </section>
