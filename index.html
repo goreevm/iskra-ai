@@ -236,86 +236,36 @@
             align-items: center;
         }
 
-        .hero-visual {
-            position: relative;
-            background: var(--bg-dark-card);
-            border-radius: 28px;
-            border: 1px solid var(--border-dark);
-            padding: 50px 30px;
-            min-height: 400px;
+        /* БЛОК С ПАРЯЩЕЙ КАРТИНКОЙ */
+        .hero-card-wrapper {
+            width: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            animation: floatUpAndDown 6s ease-in-out infinite; /* Анимация парения */
         }
 
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-lime), var(--accent-lavender));
-            border-radius: 30px;
-            z-index: -1;
-            opacity: 0.6;
-            filter: blur(12px);
+        .hero-custom-card {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            border-radius: 32px; /* Скругляем углы у JPG картинки */
+            box-shadow: 0 20px 50px rgba(121, 91, 255, 0.4); /* Фирменное свечение */
+            border: 1px solid rgba(183, 165, 255, 0.2);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: cover;
         }
 
-        /* Стиль для большого логотипа в правой карточке (чистый код) */
-        .hero-logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
+        /* Эффект легкого увеличения при наведении мыши (парение не останавливается) */
+        .hero-custom-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 60px rgba(121, 91, 255, 0.6);
         }
 
-        .hero-logo-mark {
-            position: relative;
-            font-size: 64px;
-            font-weight: 800;
-            color: var(--accent-lavender);
-            background: linear-gradient(135deg, #fff 20%, var(--accent-lavender) 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -4px;
-            line-height: 1;
-        }
-
-        .hero-logo-mark::after {
-            content: '✨';
-            position: absolute;
-            top: -10px;
-            right: -24px;
-            font-size: 24px;
-            filter: drop-shadow(0 0 12px var(--accent-lime));
-            -webkit-text-fill-color: initial; /* Возвращаем искре цвет */
-        }
-
-        .hero-card-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-
-        .hero-card-title span {
-            color: var(--accent-purple);
-        }
-
-        .hero-card-subtitle {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted-dark);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .hero-card-desc {
-            font-size: 14px;
-            color: var(--text-muted-dark);
+        /* Ключевые кадры для эффекта парения вверх-вниз */
+        @keyframes floatUpAndDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
         }
 
         .sparkle-tag {
@@ -709,14 +659,12 @@
                     <a href="#pricing" class="btn btn-outline">Прайс-лист</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-logo-box">
-                    <div class="hero-logo-mark">IA</div>
-                </div>
-                <div class="hero-card-title">ИСКРА <span>AI</span></div>
-                <div class="hero-card-subtitle">Creative Studio</div>
-                <div class="hero-card-desc">AI — это инструмент, а не самоцель. Создаем понятный результат для вашего бизнеса.</div>
+            
+            <!-- ПАРЯЩАЯ КАРТИНКА -->
+            <div class="hero-card-wrapper">
+                <img src="card-image.jpg" alt="ИСКРА AI Creative Studio" class="hero-custom-card">
             </div>
+
         </div>
     </section>
 
