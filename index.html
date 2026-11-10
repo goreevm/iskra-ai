@@ -56,7 +56,7 @@
             padding: 0 24px;
         }
 
-        /* Header */
+        /* Header (Логотип кодом) */
         header {
             position: fixed;
             top: 0;
@@ -75,11 +75,65 @@
             height: 90px;
         }
 
-        .logo-img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(121, 91, 255, 0.4));
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #795BFF, #B7A5FF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(121, 91, 255, 0.5);
+        }
+
+        .logo-icon::after {
+            content: '✨';
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            font-size: 14px;
+            filter: drop-shadow(0 0 6px var(--accent-lime));
+        }
+
+        .logo-text-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: -0.5px;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .logo-title span {
+            color: var(--accent-purple);
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
         }
 
         nav ul {
@@ -187,7 +241,7 @@
             background: var(--bg-dark-card);
             border-radius: 28px;
             border: 1px solid var(--border-dark);
-            padding: 45px 30px;
+            padding: 50px 30px;
             min-height: 400px;
             display: flex;
             flex-direction: column;
@@ -208,13 +262,55 @@
             filter: blur(12px);
         }
 
-        .hero-card-img {
-            max-width: 100%;
-            height: auto;
-            max-height: 160px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px rgba(121, 91, 255, 0.4));
+        /* Стиль для большого логотипа в правой карточке (чистый код) */
+        .hero-logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .hero-logo-mark {
+            position: relative;
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--accent-lavender);
+            background: linear-gradient(135deg, #fff 20%, var(--accent-lavender) 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -4px;
+            line-height: 1;
+        }
+
+        .hero-logo-mark::after {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -24px;
+            font-size: 24px;
+            filter: drop-shadow(0 0 12px var(--accent-lime));
+            -webkit-text-fill-color: initial; /* Возвращаем искре цвет */
+        }
+
+        .hero-card-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .hero-card-title span {
+            color: var(--accent-purple);
+        }
+
+        .hero-card-subtitle {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted-dark);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
         }
 
         .hero-card-desc {
@@ -581,7 +677,11 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <img src="logo.png" alt="ИСКРА AI" class="logo-img">
+                <div class="logo-icon">IA</div>
+                <div class="logo-text-wrap">
+                    <div class="logo-title">ИСКРА <span>AI</span></div>
+                    <div class="logo-subtitle">Creative Studio</div>
+                </div>
             </a>
             <nav>
                 <ul>
@@ -610,13 +710,17 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="hero-logo.png" alt="ИСКРА AI Creative Studio" class="hero-card-img">
+                <div class="hero-logo-box">
+                    <div class="hero-logo-mark">IA</div>
+                </div>
+                <div class="hero-card-title">ИСКРА <span>AI</span></div>
+                <div class="hero-card-subtitle">Creative Studio</div>
                 <div class="hero-card-desc">AI — это инструмент, а не самоцель. Создаем понятный результат для вашего бизнеса.</div>
             </div>
         </div>
     </section>
 
-    <!-- About (Light / Молочный контраст) -->
+    <!-- About -->
     <section id="about" class="section-light">
         <div class="container">
             <div class="section-header">
@@ -640,7 +744,7 @@
         </div>
     </section>
 
-    <!-- Services (Dark) -->
+    <!-- Services -->
     <section id="services" class="section-dark">
         <div class="container">
             <div class="section-header">
@@ -695,7 +799,7 @@
         </div>
     </section>
 
-    <!-- Pricing & Packages (Light / Молочный контраст) -->
+    <!-- Pricing -->
     <section id="pricing" class="section-light">
         <div class="container">
             <div class="section-header">
@@ -744,7 +848,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Concepts (Dark) -->
+    <!-- Portfolio Concepts -->
     <section id="portfolio" class="section-dark">
         <div class="container">
             <div class="section-header">
@@ -780,7 +884,7 @@
         </div>
     </section>
 
-    <!-- Workflow (Light / Молочный контраст) -->
+    <!-- Workflow -->
     <section id="workflow" class="section-light">
         <div class="container">
             <div class="section-header">
@@ -812,7 +916,7 @@
         </div>
     </section>
 
-    <!-- FAQ (Dark) -->
+    <!-- FAQ -->
     <section id="faq" class="section-dark">
         <div class="container">
             <div class="section-header">
@@ -840,7 +944,7 @@
         </div>
     </section>
 
-    <!-- CTA & Contacts (Dark) -->
+    <!-- CTA & Contacts -->
     <section id="contacts" class="cta-section">
         <div class="container cta-box">
             <h2>Есть идея? Давайте придадим ей форму.</h2>
