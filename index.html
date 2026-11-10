@@ -56,7 +56,7 @@
             padding: 0 24px;
         }
 
-        /* Header (Стили только для логотипа в шапке) */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -79,9 +79,6 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            background: transparent !important; /* Убираем любой возможный фон на ссылке */
-            border: none !important;
-            padding: 0 !important;
         }
         
         /* Стили для нового прозрачного логотипа в шапке */
@@ -90,10 +87,10 @@
             width: auto;
             object-fit: contain;
             margin-right: 12px; 
-            background: transparent !important; /* Полностью убираем серые подложки */
+            background: transparent !important;
             border: none !important;
             box-shadow: none !important;
-            filter: drop-shadow(0px 0px 10px rgba(121, 91, 255, 0.45)); /* Легкое неоновое свечение */
+            filter: drop-shadow(0px 0px 10px rgba(121, 91, 255, 0.45)); 
             transition: transform 0.2s ease;
         }
 
@@ -450,7 +447,7 @@
             gap: 20px;
         }
 
-        /* Cards common styles */
+        /* Cards */
         .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item {
             border: 1px solid;
             border-radius: 22px;
@@ -658,8 +655,8 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <!-- Вставляем новый логотип в левый верхний угол -->
-                <img src="header-logo.png" alt="IA" class="header__logo-img">
+                <!-- Вставляем логотип с твоим названием файла -->
+                <img src="header-logo-Photoroom.png" alt="IA" class="header__logo-img">
                 <div class="logo-text-wrap">
                     <div class="logo-title">ИСКРА <span>AI</span></div>
                     <div class="logo-subtitle">Creative Studio</div>
