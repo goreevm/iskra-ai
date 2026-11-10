@@ -75,60 +75,11 @@
             height: 90px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            position: relative;
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #795BFF, #B7A5FF);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 20px;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(121, 91, 255, 0.5);
-        }
-
-        .logo-icon::after {
-            content: '✨';
-            position: absolute;
-            top: -6px;
-            right: -8px;
-            font-size: 14px;
-            filter: drop-shadow(0 0 6px var(--accent-lime));
-        }
-
-        .logo-text-wrap {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-title {
-            font-weight: 800;
-            font-size: 18px;
-            letter-spacing: -0.5px;
-            color: #fff;
-            line-height: 1.1;
-        }
-
-        .logo-title span {
-            color: var(--accent-purple);
-        }
-
-        .logo-subtitle {
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--text-muted-dark);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 2px;
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(121, 91, 255, 0.4));
         }
 
         nav ul {
@@ -236,7 +187,7 @@
             background: var(--bg-dark-card);
             border-radius: 28px;
             border: 1px solid var(--border-dark);
-            padding: 45px;
+            padding: 45px 30px;
             min-height: 400px;
             display: flex;
             flex-direction: column;
@@ -257,45 +208,13 @@
             filter: blur(12px);
         }
 
-        /* Стиль для большого логотипа в правой карточке */
-        .hero-logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        .hero-logo-mark {
-            position: relative;
-            font-size: 44px;
-            font-weight: 800;
-            color: var(--accent-lavender);
-            background: linear-gradient(135deg, #fff 20%, var(--accent-lavender) 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
-        }
-
-        .hero-logo-mark::after {
-            content: '✨';
-            position: absolute;
-            top: -10px;
-            right: -16px;
-            font-size: 18px;
-            filter: drop-shadow(0 0 10px var(--accent-lime));
-        }
-
-        .hero-card-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-
-        .hero-card-title span {
-            color: var(--accent-purple);
+        .hero-card-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 160px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(121, 91, 255, 0.4));
         }
 
         .hero-card-desc {
@@ -662,11 +581,7 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <div class="logo-icon">IA</div>
-                <div class="logo-text-wrap">
-                    <div class="logo-title">ИСКРА <span>AI</span></div>
-                    <div class="logo-subtitle">Creative Studio</div>
-                </div>
+                <img src="logo.png" alt="ИСКРА AI" class="logo-img">
             </a>
             <nav>
                 <ul>
@@ -695,10 +610,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-logo-box">
-                    <div class="hero-logo-mark">IA</div>
-                </div>
-                <div class="hero-card-title">ИСКРА <span>AI</span></div>
+                <img src="hero-logo.png" alt="ИСКРА AI Creative Studio" class="hero-card-img">
                 <div class="hero-card-desc">AI — это инструмент, а не самоцель. Создаем понятный результат для вашего бизнеса.</div>
             </div>
         </div>
