@@ -56,7 +56,7 @@
             padding: 0 24px;
         }
 
-        /* Header с твоим логотипом */
+        /* Header с фирменным стилем */
         header {
             position: fixed;
             top: 0;
@@ -75,16 +75,60 @@
             height: 90px;
         }
 
-        .logo-img {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(121, 91, 255, 0.4));
-            transition: transform 0.3s ease;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logo-img:hover {
-            transform: scale(1.03);
+        .logo-icon {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #795BFF, #B7A5FF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(121, 91, 255, 0.5);
+        }
+
+        .logo-icon::after {
+            content: '✨';
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            font-size: 14px;
+            filter: drop-shadow(0 0 6px var(--accent-lime));
+        }
+
+        .logo-text-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: -0.5px;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .logo-title span {
+            color: var(--accent-purple);
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
         }
 
         nav ul {
@@ -584,7 +628,11 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <img src="logo.png" alt="ИСКРА AI" class="logo-img">
+                <div class="logo-icon">IA</div>
+                <div class="logo-text-wrap">
+                    <div class="logo-title">ИСКРА <span>AI</span></div>
+                    <div class="logo-subtitle">Creative Studio</div>
+                </div>
             </a>
             <nav>
                 <ul>
