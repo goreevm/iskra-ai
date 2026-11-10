@@ -56,7 +56,7 @@
             padding: 0 24px;
         }
 
-        /* Header (Логотип кодом) */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -197,7 +197,6 @@
                 radial-gradient(circle at 85% 15%, rgba(121, 91, 255, 0.35) 0%, transparent 45%),
                 radial-gradient(circle at 10% 75%, rgba(183, 165, 255, 0.15) 0%, transparent 40%),
                 var(--bg-dark);
-            overflow: hidden;
         }
 
         .hero-grid {
@@ -236,33 +235,31 @@
             align-items: center;
         }
 
-        /* БЛОК С ПАРЯЩЕЙ КАРТИНКОЙ */
+        /* Парящая картинка */
         .hero-card-wrapper {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: floatUpAndDown 6s ease-in-out infinite; /* Анимация парения */
+            animation: floatUpAndDown 6s ease-in-out infinite; 
         }
 
         .hero-custom-card {
             width: 100%;
             max-width: 480px;
             height: auto;
-            border-radius: 32px; /* Скругляем углы у JPG картинки */
-            box-shadow: 0 20px 50px rgba(121, 91, 255, 0.4); /* Фирменное свечение */
+            border-radius: 32px; 
+            box-shadow: 0 20px 50px rgba(121, 91, 255, 0.4);
             border: 1px solid rgba(183, 165, 255, 0.2);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             object-fit: cover;
         }
 
-        /* Эффект легкого увеличения при наведении мыши (парение не останавливается) */
         .hero-custom-card:hover {
             transform: scale(1.03);
             box-shadow: 0 25px 60px rgba(121, 91, 255, 0.6);
         }
 
-        /* Ключевые кадры для эффекта парения вверх-вниз */
         @keyframes floatUpAndDown {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-18px); }
@@ -281,11 +278,56 @@
             margin-bottom: 24px;
             box-shadow: 0 0 20px rgba(200, 243, 107, 0.25);
             border: 1px solid rgba(200, 243, 107, 0.3);
+            backdrop-filter: blur(5px);
         }
 
-        /* Sections General */
+        /* --- БЕГУЩИЕ ВОЛНЫ МЕЖДУ СЕКЦИЯМИ --- */
+        .wave-divider {
+            width: 100%;
+            height: 50px;
+            background-color: var(--bg-dark);
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Фиолетовая волна */
+        .wave-line-1 {
+            position: absolute;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q100,50 200,25 T400,25' fill='none' stroke='%23795BFF' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+            background-size: 400px 100%;
+            animation: runWave 4s linear infinite;
+            filter: drop-shadow(0 0 6px #795BFF);
+        }
+
+        /* Лаймовая волна (в противофазе) */
+        .wave-line-2 {
+            position: absolute;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q100,0 200,25 T400,25' fill='none' stroke='%23C8F36B' stroke-width='1.5'/%3E%3C/svg%3E") repeat-x;
+            background-size: 400px 100%;
+            animation: runWave 5s linear infinite reverse;
+            filter: drop-shadow(0 0 6px #C8F36B);
+            opacity: 0.7;
+        }
+
+        @keyframes runWave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-400px); }
+        }
+
+        /* Общие отступы секций */
         section {
-            padding: 110px 0;
+            padding: 100px 0;
         }
 
         .section-header {
@@ -355,8 +397,6 @@
         .section-dark {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            border-top: 1px solid var(--border-dark);
-            border-bottom: 1px solid var(--border-dark);
         }
 
         .section-dark .section-header p {
@@ -610,7 +650,6 @@
             background: var(--bg-dark);
         }
 
-        /* Responsive */
         @media (max-width: 968px) {
             .hero-grid, .services-grid, .packages-grid, .about-grid, .portfolio-grid, .workflow-grid, .faq-grid {
                 grid-template-columns: 1fr;
@@ -660,13 +699,17 @@
                 </div>
             </div>
             
-            <!-- ПАРЯЩАЯ КАРТИНКА -->
             <div class="hero-card-wrapper">
                 <img src="card-image.jpg" alt="ИСКРА AI Creative Studio" class="hero-custom-card">
             </div>
-
         </div>
     </section>
+
+    <!-- Бегущая волна-разделитель 1 -->
+    <div class="wave-divider">
+        <div class="wave-line-1"></div>
+        <div class="wave-line-2"></div>
+    </div>
 
     <!-- About -->
     <section id="about" class="section-light">
@@ -691,6 +734,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Бегущая волна-разделитель 2 -->
+    <div class="wave-divider">
+        <div class="wave-line-1"></div>
+        <div class="wave-line-2"></div>
+    </div>
 
     <!-- Services -->
     <section id="services" class="section-dark">
@@ -747,6 +796,12 @@
         </div>
     </section>
 
+    <!-- Бегущая волна-разделитель 3 -->
+    <div class="wave-divider">
+        <div class="wave-line-1"></div>
+        <div class="wave-line-2"></div>
+    </div>
+
     <!-- Pricing -->
     <section id="pricing" class="section-light">
         <div class="container">
@@ -796,6 +851,12 @@
         </div>
     </section>
 
+    <!-- Бегущая волна-разделитель 4 -->
+    <div class="wave-divider">
+        <div class="wave-line-1"></div>
+        <div class="wave-line-2"></div>
+    </div>
+
     <!-- Portfolio Concepts -->
     <section id="portfolio" class="section-dark">
         <div class="container">
@@ -832,6 +893,12 @@
         </div>
     </section>
 
+    <!-- Бегущая волна-разделитель 5 -->
+    <div class="wave-divider">
+        <div class="wave-line-1"></div>
+        <div class="wave-line-2"></div>
+    </div>
+
     <!-- Workflow -->
     <section id="workflow" class="section-light">
         <div class="container">
@@ -863,6 +930,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Бегущая волна-разделитель 6 -->
+    <div class="wave-divider">
+        <div class="wave-line-1"></div>
+        <div class="wave-line-2"></div>
+    </div>
 
     <!-- FAQ -->
     <section id="faq" class="section-dark">
