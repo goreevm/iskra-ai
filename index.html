@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИСКРА AI — Creative Studio | Превращаем идеи в визуальные решения</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #191927;
+            --bg-card: #222234;
+            --bg-light: #F4F2F8;
+            --text-main: #F4F2F8;
+            --text-muted: #9B9BAE;
+            --accent-purple: #795BFF;
+            --accent-purple-hover: #6747ef;
+            --accent-lime: #C8F36B;
+            --accent-lavender: #B7A5FF;
+            --border-color: rgba(121, 91, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(25, 25, 39, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-purple);
+        }
+
+        .logo-badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-muted);
+            border-left: 1px solid var(--border-color);
+            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-purple);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(121, 91, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-purple-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(121, 91, 255, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-purple);
+            background: rgba(121, 91, 255, 0.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(121, 91, 255, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(200, 243, 107, 0.07) 0%, transparent 40%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-purple);
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .hero-visual {
+            position: relative;
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-lime));
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .hero-card-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .sparkle-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(200, 243, 107, 0.1);
+            color: var(--accent-lime);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Sections Common */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            max-width: 700px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* About Section */
+        .about {
+            background: #14141F;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 20px;
+        }
+
+        .about-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .service-list {
+            margin-bottom: 24px;
+        }
+
+        .service-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .service-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-lime);
+        }
+
+        /* Pricing & Packages */
+        .packages-section {
+            background: #14141F;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .package-card.featured {
+            border-color: var(--accent-purple);
+            background: linear-gradient(180deg, rgba(121, 91, 255, 0.08) 0%, var(--bg-card) 100%);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            right: 30px;
+            background: var(--accent-purple);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .package-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .package-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .package-cost {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .package-features {
+            flex-grow: 1;
+            margin-bottom: 32px;
+        }
+
+        .package-features li {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-lime);
+            font-weight: bold;
+        }
+
+        /* Portfolio Concepts */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-img-placeholder {
+            height: 220px;
+            background: linear-gradient(135deg, #2b2b40, #1a1a2b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .portfolio-content {
+            padding: 24px;
+        }
+
+        .portfolio-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .portfolio-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Workflow */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .workflow-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .workflow-num {
+            font-size: 36px;
+            font-weight: 800;
+            color: rgba(121, 91, 255, 0.3);
+            margin-bottom: 16px;
+        }
+
+        .workflow-step h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .workflow-step p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* CTA & Footer */
+        .cta-section {
+            background: linear-gradient(135deg, #1f1f33, #151524);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .cta-box p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent-purple);
+            background: rgba(121, 91, 255, 0.1);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-grid, .services-grid, .packages-grid, .about-grid, .portfolio-grid, .workflow-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>ИСКРА</span> AI
+                <div class="logo-badge">Creative Studio</div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">О студии</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#pricing">Прайс</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#workflow">Как мы работаем</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <a href="#contacts" class="btn btn-primary">Обсудить проект</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="sparkle-tag">✨ Независимая креативная студия</div>
+                <h1>Идеи обретают форму</h1>
+                <p class="hero-subtitle">Превращаем идеи в качественные визуальные материалы, рекламные креативы, презентации и контент для продвижения с помощью современных инструментов дизайна и искусственного интеллекта.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Смотреть услуги</a>
+                    <a href="#pricing" class="btn btn-outline">Прайс-лист</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div style="font-size: 48px; margin-bottom: 16px;">⚡</div>
+                <div class="hero-card-title">ИСКРА AI</div>
+                <div class="hero-card-desc">AI — это инструмент, а не самоцель. Создаем понятный результат для вашего бизнеса.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>О студии</h2>
+                <p>Мы за честный подход и сильный результат без лишней терминологии и шаблонных решений.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Кто мы</h3>
+                    <p>Независимая студия, объединяющая передовые возможности генеративных нейросетей и профессиональный художественный вкус.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Наш подход</h3>
+                    <p>AI ускоряет процессы и расширяет рамки возможного, но за каждую деталь, композицию и смысл отвечает человек.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Результат для бизнеса</h3>
+                    <p>Мы не продаем технологии ради моды — мы создаем графику и контент, которые привлекают внимание и решают ваши задачи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши услуги</h2>
+                <p>Фокусируемся на том, в чём сильны и что приносит максимальную пользу вашему продукту.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Рекламные креативы и визуалы</h3>
+                    <p>Привлекайте клиентов с помощью ярких визуальных материалов для таргета и контекста.</p>
+                    <ul class="service-list">
+                        <li>Рекламные изображения и баннеры</li>
+                        <li>Визуалы для товаров и услуг</li>
+                        <li>Макеты акций и спецпредложений</li>
+                        <li>Серии креативов в единой концепции</li>
+                    </ul>
+                    <div class="service-price">от 2 500 ₽</div>
+                </div>
+                <div class="service-card">
+                    <h3>Контент для соцсетей</h3>
+                    <p>Стильное оформление страниц и публикаций для Telegram, VK и Instagram.</p>
+                    <ul class="service-list">
+                        <li>Дизайн постов и каруселей</li>
+                        <li>Оформление Stories</li>
+                        <li>Обложки и визуальные серии</li>
+                        <li>Тексты для публикаций</li>
+                    </ul>
+                    <div class="service-price">от 1 800 ₽</div>
+                </div>
+                <div class="service-card">
+                    <h3>Презентации и документы</h3>
+                    <p>Упаковка ваших идей, продуктов и услуг в структурированные PDF-материалы.</p>
+                    <ul class="service-list">
+                        <li>Презентации для бизнеса и продуктов</li>
+                        <li>Коммерческие предложения (КП)</li>
+                        <li>Обучающие материалы и гайды</li>
+                        <li>Структурирование информации</li>
+                    </ul>
+                    <div class="service-price">от 4 000 ₽</div>
+                </div>
+                <div class="service-card">
+                    <h3>AI-видео и ролики</h3>
+                    <p>Короткие динамичные видеоматериалы для привлечения внимания в Reels и Shorts.</p>
+                    <ul class="service-list">
+                        <li>Короткие рекламные ролики</li>
+                        <li>Видео для Reels / Shorts</li>
+                        <li>Анимированные визуалы и персонажи</li>
+                    </ul>
+                    <div class="service-price">от 5 000 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Packages -->
+    <section id="pricing" class="packages-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Пакеты услуг</h2>
+                <p>Готовые сбалансированные решения для быстрого старта и комплексного продвижения.</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-name">START</div>
+                    <div class="package-desc">«Визуальный старт» для теста задачи</div>
+                    <div class="package-cost">5 900 ₽</div>
+                    <ul class="package-features">
+                        <li>2 рекламных визуала</li>
+                        <li>1 адаптация под другой формат</li>
+                        <li>Подготовка файлов к публикации</li>
+                        <li>2 раунда правок</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-outline" style="width: 100%;">Выбрать START</a>
+                </div>
+                <div class="package-card featured">
+                    <div class="package-badge">Хит</div>
+                    <div class="package-name">CONTENT</div>
+                    <div class="package-desc">Пакет для соцсетей на неделю / месяц</div>
+                    <div class="package-cost">9 900 ₽</div>
+                    <ul class="package-features">
+                        <li>3 оформленных поста</li>
+                        <li>1 карусель до 5 слайдов</li>
+                        <li>3 Stories</li>
+                        <li>Тексты к публикациям</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-primary" style="width: 100%;">Выбрать CONTENT</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-name">PRESENT</div>
+                    <div class="package-desc">Упаковка продукта или экспертности</div>
+                    <div class="package-cost">8 900 ₽</div>
+                    <ul class="package-features">
+                        <li>Презентация до 10 слайдов</li>
+                        <li>Структурирование информации</li>
+                        <li>Визуальная концепция</li>
+                        <li>Готовый PDF-файл</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-outline" style="width: 100%;">Выбрать PRESENT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Concepts -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Портфолио и концепты</h2>
+                <p>Демонстрация стиля, возможностей генерации и уровня проработки визуальных материалов.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img-placeholder">Концепт визуала 01</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Рекламный креатив</span>
+                        <h3>Серия баннеров для бренда</h3>
+                        <p>Разработка линейки рекламных макетов с глубокой проработкой освещения и композиции.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img-placeholder">Концепт визуала 02</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Презентация</span>
+                        <h3>Бизнес-презентация продукта</h3>
+                        <p>Структурирование данных и оформление 10 слайдов в строгой фирменной стилистике.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img-placeholder">Концепт визуала 03</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Соцсети</span>
+                        <h3>Оформление серии постов</h3>
+                        <p>Создание гармоничного визуального ряда каруселей для экспертного блога.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow -->
+    <section id="workflow" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Как мы работаем</h2>
+                <p>Прозрачный процесс от первой заявки до передачи готовых исходников.</p>
+            </div>
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <div class="workflow-num">01</div>
+                    <h3>Запрос и цель</h3>
+                    <p>Обсуждаем вашу задачу, формат и желаемый результат.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-num">02</div>
+                    <h3>ТЗ и предоплата</h3>
+                    <p>Согласовываем ТЗ, сроки (2–4 дня) и фиксируем 50% предоплату.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-num">03</div>
+                    <h3>Создание</h3>
+                    <p>Генерируем визуалы, верстаем макеты и вносим правки (2 раунда).</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-num">04</div>
+                    <h3>Результат</h3>
+                    <p>Получаете финальную оплату 50% и передачу всех исходных файлов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Частые вопросы</h2>
+                <p>Всё, что важно знать перед началом сотрудничества.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Как сделать заказ?</h3>
+                    <p>Напишите нам в Telegram или любой удобный мессенджер. Мы обсудим задачу и зафиксируем детали.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Сколько времени занимает работа?</h3>
+                    <p>Средний срок выполнения стандартных задач составляет от 2 до 4 рабочих дней в зависимости от объёма.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Сколько правок входит в стоимость?</h3>
+                    <p>В стоимость каждого заказа включено 2 раунда правок в рамках первоначального технического задания.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Какие материалы нужны от меня?</h3>
+                    <p>Только описание вашего продукта или задачи, пожелания по стилю и имеющиеся текстовые материалы.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Contacts -->
+    <section id="contacts" class="cta-section">
+        <div class="container cta-box">
+            <h2>Есть идея? Давайте придадим ей форму.</h2>
+            <p>Свяжитесь с нами, чтобы обсудить ваш проект и рассчитать точную стоимость.</p>
+            <a href="https://t.me/your_telegram" target="_blank" class="btn btn-primary" style="padding: 16px 36px; font-size: 16px;">Написать в Telegram</a>
+            <div class="social-links">
+                <a href="https://t.me/your_telegram" target="_blank" class="social-btn">Telegram</a>
+                <a href="https://vk.com/your_vk" target="_blank" class="social-btn">ВКонтакте</a>
+                <a href="https://instagram.com/your_instagram" target="_blank" class="social-btn">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 ИСКРА AI — Creative Studio. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
