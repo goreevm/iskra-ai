@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИСКРА AI — Creative Studio | Превращаем идеи в визуальные решения</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Подключаем шрифт Philosopher -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #191927;
@@ -39,6 +40,11 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Применяем утонченный шрифт Philosopher к заголовкам */
+        h1, h2, h3, .logo-title, .hero-card-title, .package-name {
+            font-family: 'Philosopher', sans-serif !important;
         }
 
         a {
