@@ -24,712 +24,160 @@
             --border-light: rgba(121, 91, 255, 0.15);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Заголовки */
-        h1, h2, h3, .logo-title, .hero-card-title, .package-name {
-            font-family: 'Philosopher', sans-serif !important;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, .logo-title, .hero-card-title, .package-name { font-family: 'Philosopher', sans-serif !important; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(25, 25, 39, 0.85);
-            backdrop-filter: blur(16px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-dark);
-        }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 90px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        
-        .header__logo-img {
-            height: 38px; 
-            width: auto;
-            object-fit: contain;
-            margin-right: 12px; 
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            filter: drop-shadow(0px 0px 10px rgba(121, 91, 255, 0.45)); 
-            transition: transform 0.2s ease;
-        }
-
-        .logo:hover .header__logo-img {
-            transform: scale(1.05);
-        }
-
-        .logo-text-wrap {
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid var(--border-dark); 
-            padding-left: 14px;
-        }
-
-        .logo-title {
-            font-weight: 800;
-            font-size: 18px;
-            letter-spacing: -0.5px;
-            color: #fff;
-            line-height: 1.1;
-        }
-
-        .logo-title span {
-            color: var(--accent-purple);
-        }
-
-        .logo-subtitle {
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--text-muted-dark);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        nav a {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-muted-dark);
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--text-light);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 26px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-purple);
-            color: #fff;
-            box-shadow: 0 0 25px rgba(121, 91, 255, 0.45);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-purple-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(121, 91, 255, 0.7);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border-dark);
-            color: var(--text-light);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-purple);
-            background: rgba(121, 91, 255, 0.1);
-        }
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(25, 25, 39, 0.85); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid var(--border-dark); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .header__logo-img { height: 38px; width: auto; object-fit: contain; margin-right: 12px; filter: drop-shadow(0px 0px 10px rgba(121, 91, 255, 0.45)); transition: transform 0.2s ease; }
+        .logo:hover .header__logo-img { transform: scale(1.05); }
+        .logo-text-wrap { display: flex; flex-direction: column; border-left: 1px solid var(--border-dark); padding-left: 14px; }
+        .logo-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; color: #fff; line-height: 1.1; }
+        .logo-title span { color: var(--accent-purple); }
+        .logo-subtitle { font-size: 10px; font-weight: 600; color: var(--text-muted-dark); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+        nav ul { display: flex; gap: 32px; align-items: center; }
+        nav a { font-size: 15px; font-weight: 500; color: var(--text-muted-dark); transition: color 0.3s ease; }
+        nav a:hover { color: var(--text-light); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 26px; border-radius: 50px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-primary { background-color: var(--accent-purple); color: #fff; box-shadow: 0 0 25px rgba(121, 91, 255, 0.45); }
+        .btn-primary:hover { background-color: var(--accent-purple-hover); transform: translateY(-2px); box-shadow: 0 0 35px rgba(121, 91, 255, 0.7); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-dark); color: var(--text-light); }
+        .btn-outline:hover { border-color: var(--accent-purple); background: rgba(121, 91, 255, 0.1); }
 
         /* Hero Section */
-        .hero {
-            padding: 200px 0 130px;
-            position: relative;
-            background: 
-                radial-gradient(circle at 85% 15%, rgba(121, 91, 255, 0.35) 0%, transparent 45%),
-                radial-gradient(circle at 10% 75%, rgba(183, 165, 255, 0.15) 0%, transparent 40%),
-                var(--bg-dark);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(42px, 5.5vw, 68px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -1.5px;
-        }
-
-        .hero-content h1 span {
-            color: var(--accent-purple);
-            text-shadow: 0 0 25px rgba(121, 91, 255, 0.5);
-            display: inline-block;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            color: var(--text-muted-dark);
-            margin-bottom: 40px;
-            max-width: 540px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        /* Парящая картинка */
-        .hero-card-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: floatUpAndDown 6s ease-in-out infinite; 
-        }
-
-        .hero-custom-card {
-            width: 100%;
-            max-width: 480px;
-            height: auto;
-            border-radius: 32px; 
-            box-shadow: 0 20px 50px rgba(121, 91, 255, 0.4);
-            border: 1px solid rgba(183, 165, 255, 0.2);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            object-fit: cover;
-        }
-
-        .hero-custom-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 25px 60px rgba(121, 91, 255, 0.6);
-        }
-
-        @keyframes floatUpAndDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-18px); }
-        }
-
-        /* --- ТЕГ-НЕОН С САЛЮТОМ --- */
-        .hero-tag-wrap {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 24px;
-        }
-
-        .hero-tag-text {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-lime);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 12px rgba(200, 243, 107, 0.6); /* Неоновое свечение самого текста */
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .hero-tag-wrap.visible .hero-tag-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .firework-container {
-            position: relative;
-            width: 100%;
-            height: 15px;
-            margin-top: 4px;
-        }
-
-        /* Дорожка из точек */
-        .firework-trail {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 4px;
-            background-image: radial-gradient(circle, var(--accent-lime) 2px, transparent 2px);
-            background-size: 12px 12px;
-            background-position: left center;
-            width: 0;
-            opacity: 0;
-        }
-
-        .hero-tag-wrap.visible .firework-trail {
-            animation: trailAnimate 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.2s; 
-        }
-
-        @keyframes trailAnimate {
-            0% { width: 0%; opacity: 0; margin-left: 0; }
-            20% { width: 100%; opacity: 1; margin-left: 0; } /* Дорожка пробегает вправо */
-            60% { width: 100%; opacity: 1; margin-left: 0; } /* Держится под текстом */
-            85% { width: 4px; opacity: 1; margin-left: calc(100% - 4px); } /* Резко стягивается в одну точку справа */
-            100% { width: 4px; opacity: 0; margin-left: calc(100% - 4px); }
-        }
-
-        /* Вспышка (салют) */
-        .firework-bang {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #ffffff;
-            box-shadow: 0 0 15px 5px var(--accent-lime), 0 0 30px 10px var(--accent-lime);
-            opacity: 0;
-            transform: translateY(-50%) scale(0);
-        }
-
-        .hero-tag-wrap.visible .firework-bang {
-            animation: bangAnimate 0.6s ease-out forwards;
-            animation-delay: 1.85s; /* Зажигается ровно в тот момент, когда дорожка стянулась в точку */
-        }
-
-        @keyframes bangAnimate {
-            0% { transform: translateY(-50%) scale(0.5); opacity: 1; }
-            40% { transform: translateY(-50%) scale(2.5); opacity: 1; }
-            100% { transform: translateY(-50%) scale(4); opacity: 0; filter: blur(4px); }
-        }
-
-        /* --- БЕГУЩИЕ ВОЛНЫ --- */
-        .wave-divider {
-            width: 100%;
-            height: 120px; 
-            background-color: var(--bg-dark);
-            border-top: 1px solid var(--border-dark);
-            border-bottom: 1px solid var(--border-dark);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .wave-line-1 {
-            position: absolute;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 Q100,120 200,60 T400,60' fill='none' stroke='%23795BFF' stroke-width='4'/%3E%3C/svg%3E") repeat-x;
-            background-size: 400px 100%;
-            animation: runWave 4s linear infinite;
-            filter: drop-shadow(0 0 8px #795BFF);
-        }
-
-        .wave-line-2 {
-            position: absolute;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 Q100,0 200,60 T400,60' fill='none' stroke='%23C8F36B' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
-            background-size: 400px 100%;
-            animation: runWave 5s linear infinite reverse;
-            filter: drop-shadow(0 0 8px #C8F36B);
-            opacity: 0.8;
-        }
-
-        @keyframes runWave {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-400px); }
-        }
-
-        /* Общие отступы секций */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-            max-width: 700px;
-        }
-
-        .section-header h2 {
-            font-size: clamp(32px, 4vw, 44px);
-            font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        /* LIGHT SECTION */
-        .section-light {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-        }
-
-        .section-light .section-header p {
-            color: var(--text-muted-light);
-        }
-
-        .section-light .about-card,
-        .section-light .service-card,
-        .section-light .package-card,
-        .section-light .portfolio-item,
-        .section-light .workflow-step,
-        .section-light .faq-item {
-            background-color: var(--bg-light-card);
-            border-color: var(--border-light);
-            color: var(--text-dark);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.05);
-        }
-
-        .section-light .about-card p,
-        .section-light .service-card p,
-        .section-light .service-card .service-list li,
-        .section-light .package-card .package-desc,
-        .section-light .package-card .package-features li,
-        .section-light .portfolio-item .portfolio-content p,
-        .section-light .workflow-step p,
-        .section-light .faq-item p {
-            color: var(--text-muted-light);
-        }
-
-        .section-light .service-card .service-list li {
-            color: var(--text-dark);
-        }
-
-        .section-light .package-card.featured {
-            background: linear-gradient(180deg, rgba(121, 91, 255, 0.08) 0%, #FFFFFF 100%);
-            border-color: var(--accent-purple);
-        }
-
-        .section-light .portfolio-img-placeholder {
-            background: linear-gradient(135deg, #eae7f5, #d6d0ec);
-            color: #555566;
-        }
-
-        .section-light .workflow-num {
-            color: rgba(121, 91, 255, 0.2);
-        }
-
-        /* DARK SECTION */
-        .section-dark {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-        }
-
-        .section-dark .section-header p {
-            color: var(--text-muted-dark);
-        }
-
-        .section-dark .about-card,
-        .section-dark .service-card,
-        .section-dark .package-card,
-        .section-dark .portfolio-item,
-        .section-dark .workflow-step,
-        .section-dark .faq-item {
-            background-color: var(--bg-dark-card);
-            border-color: var(--border-dark);
-        }
-
-        .section-dark .about-card p,
-        .section-dark .service-card p,
-        .section-dark .service-card .service-list li,
-        .section-dark .package-card .package-desc,
-        .section-dark .package-card .package-features li,
-        .section-dark .portfolio-item .portfolio-content p,
-        .section-dark .workflow-step p,
-        .section-dark .faq-item p {
-            color: var(--text-muted-dark);
-        }
-
-        .section-dark .service-card .service-list li {
-            color: var(--text-light);
-        }
-
-        .section-dark .package-card.featured {
-            background: linear-gradient(180deg, rgba(121, 91, 255, 0.18) 0%, var(--bg-dark-card) 100%);
-            border-color: var(--accent-purple);
-            box-shadow: 0 0 35px rgba(121, 91, 255, 0.25);
-        }
-
-        .section-dark .portfolio-img-placeholder {
-            background: linear-gradient(135deg, #2b2b42, #1c1c2e);
-            color: var(--text-muted-dark);
-        }
-
-        /* Grids */
-        .about-grid, .services-grid, .packages-grid, .portfolio-grid, .workflow-grid, .faq-grid {
-            display: grid;
-            gap: 30px;
-        }
-
-        .about-grid, .packages-grid, .portfolio-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .services-grid, .faq-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .workflow-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        /* --- КАРТОЧКИ --- */
-        .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item {
-            border: 1px solid;
-            border-radius: 22px;
-            padding: 34px;
-            
-            opacity: 0;
-            transform: translateY(40px);
-            
-            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
-                        border-color 0.35s ease, 
-                        box-shadow 0.35s ease;
-        }
-
-        .about-card.visible, .service-card.visible, .package-card.visible, .portfolio-item.visible, .workflow-step.visible, .faq-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-card.visible:hover, .service-card.visible:hover, .package-card.visible:hover, .portfolio-item.visible:hover, .workflow-step.visible:hover, .faq-item.visible:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-purple);
-            box-shadow: 0 15px 45px rgba(121, 91, 255, 0.22);
-        }
-
-        .about-card h3, .service-card h3, .package-card .package-name, .portfolio-item h3, .workflow-step h3, .faq-item h3 {
-            font-size: 21px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .service-list {
-            margin-bottom: 24px;
-        }
-
-        .service-list li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 9px;
-            font-size: 14px;
-        }
-
-        .service-list li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-purple);
-            font-weight: bold;
-        }
-
-        .service-price, .package-cost {
-            font-weight: 700;
-            color: var(--accent-purple);
-        }
-
-        .service-price {
-            font-size: 18px;
-        }
-
-        .package-card {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .package-badge {
-            position: absolute;
-            top: -12px;
-            right: 30px;
-            background: var(--accent-purple);
-            color: #fff;
-            padding: 5px 14px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(121, 91, 255, 0.5);
-        }
-
-        .package-cost {
-            font-size: 34px;
-            font-weight: 800;
-            margin-bottom: 24px;
-        }
-
-        .package-features {
-            flex-grow: 1;
-            margin-bottom: 32px;
-        }
-
-        .package-features li {
-            font-size: 14px;
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-        }
-
-        .package-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-purple);
-            font-weight: bold;
-        }
-
-        .portfolio-item {
-            overflow: hidden;
-            padding: 0;
-        }
-
-        .portfolio-img-placeholder {
-            height: 230px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            border-bottom: 1px solid inherit;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover .portfolio-img-placeholder {
-            transform: scale(1.04);
-        }
-
-        .portfolio-content {
-            padding: 26px;
-        }
-
-        .portfolio-tag {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--accent-purple);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .workflow-num {
-            font-size: 38px;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
+        .hero { padding: 200px 0 130px; position: relative; background: radial-gradient(circle at 85% 15%, rgba(121, 91, 255, 0.35) 0%, transparent 45%), radial-gradient(circle at 10% 75%, rgba(183, 165, 255, 0.15) 0%, transparent 40%), var(--bg-dark); }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+        .hero-content h1 { font-size: clamp(42px, 5.5vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1.5px; }
+        .hero-content h1 span { color: var(--accent-purple); text-shadow: 0 0 25px rgba(121, 91, 255, 0.5); display: inline-block; }
+        .hero-subtitle { font-size: 18px; color: var(--text-muted-dark); margin-bottom: 40px; max-width: 540px; }
+        .hero-buttons { display: flex; gap: 16px; align-items: center; }
+        .hero-card-wrapper { width: 100%; display: flex; justify-content: center; align-items: center; animation: floatUpAndDown 6s ease-in-out infinite; }
+        .hero-custom-card { width: 100%; max-width: 480px; height: auto; border-radius: 32px; box-shadow: 0 20px 50px rgba(121, 91, 255, 0.4); border: 1px solid rgba(183, 165, 255, 0.2); transition: transform 0.4s ease; object-fit: cover; }
+        .hero-custom-card:hover { transform: scale(1.03); box-shadow: 0 25px 60px rgba(121, 91, 255, 0.6); }
+        @keyframes floatUpAndDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+
+        /* Тег с неоном и салютом */
+        .hero-tag-wrap { display: inline-flex; flex-direction: column; align-items: flex-start; margin-bottom: 24px; }
+        .hero-tag-text { font-size: 13px; font-weight: 700; color: var(--accent-lime); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 12px rgba(200, 243, 107, 0.6); opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .hero-tag-wrap.visible .hero-tag-text { opacity: 1; transform: translateY(0); }
+        .firework-container { position: relative; width: 100%; height: 15px; margin-top: 4px; }
+        .firework-trail { position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 4px; background-image: radial-gradient(circle, var(--accent-lime) 2px, transparent 2px); background-size: 12px 12px; background-position: left center; width: 0; opacity: 0; }
+        .hero-tag-wrap.visible .firework-trail { animation: trailAnimate 2s cubic-bezier(0.4, 0, 0.2, 1) forwards; animation-delay: 0.2s; }
+        @keyframes trailAnimate { 0% { width: 0%; opacity: 0; margin-left: 0; } 20% { width: 100%; opacity: 1; margin-left: 0; } 60% { width: 100%; opacity: 1; margin-left: 0; } 85% { width: 4px; opacity: 1; margin-left: calc(100% - 4px); } 100% { width: 4px; opacity: 0; margin-left: calc(100% - 4px); } }
+        .firework-bang { position: absolute; right: 0; top: 50%; width: 6px; height: 6px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 15px 5px var(--accent-lime), 0 0 30px 10px var(--accent-lime); opacity: 0; transform: translateY(-50%) scale(0); }
+        .hero-tag-wrap.visible .firework-bang { animation: bangAnimate 0.6s ease-out forwards; animation-delay: 1.85s; }
+        @keyframes bangAnimate { 0% { transform: translateY(-50%) scale(0.5); opacity: 1; } 40% { transform: translateY(-50%) scale(2.5); opacity: 1; } 100% { transform: translateY(-50%) scale(4); opacity: 0; filter: blur(4px); } }
+
+        /* Бегущие волны */
+        .wave-divider { width: 100%; height: 120px; background-color: var(--bg-dark); border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); position: relative; overflow: hidden; display: flex; align-items: center; z-index: 10; }
+        .wave-line-1 { position: absolute; left: 0; width: 200%; height: 100%; background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 Q100,120 200,60 T400,60' fill='none' stroke='%23795BFF' stroke-width='4'/%3E%3C/svg%3E") repeat-x; background-size: 400px 100%; animation: runWave 4s linear infinite; filter: drop-shadow(0 0 8px #795BFF); }
+        .wave-line-2 { position: absolute; left: 0; width: 200%; height: 100%; background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 Q100,0 200,60 T400,60' fill='none' stroke='%23C8F36B' stroke-width='3'/%3E%3C/svg%3E") repeat-x; background-size: 400px 100%; animation: runWave 5s linear infinite reverse; filter: drop-shadow(0 0 8px #C8F36B); opacity: 0.8; }
+        @keyframes runWave { 0% { transform: translateX(0); } 100% { transform: translateX(-400px); } }
+
+        /* Sections & Grids */
+        section { padding: 100px 0; }
+        .section-header { margin-bottom: 60px; max-width: 700px; }
+        .section-header h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
+        .section-light { background-color: var(--bg-light); color: var(--text-dark); }
+        .section-light .section-header p { color: var(--text-muted-light); }
+        .section-dark { background-color: var(--bg-dark); color: var(--text-light); }
+        .section-dark .section-header p { color: var(--text-muted-dark); }
+        .about-grid, .packages-grid, .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .services-grid, .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .workflow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+        /* Cards & Hover */
+        .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item { border: 1px solid; border-radius: 22px; padding: 34px; opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+        .section-light .about-card, .section-light .service-card, .section-light .package-card, .section-light .portfolio-item, .section-light .workflow-step, .section-light .faq-item { background-color: var(--bg-light-card); border-color: var(--border-light); color: var(--text-dark); box-shadow: 0 12px 35px rgba(0,0,0,0.05); }
+        .section-light .about-card p, .section-light .service-card p, .section-light .service-card .service-list li, .section-light .package-card .package-desc, .section-light .package-card .package-features li, .section-light .portfolio-item .portfolio-content p, .section-light .workflow-step p, .section-light .faq-item p { color: var(--text-muted-light); }
+        .section-light .service-card .service-list li { color: var(--text-dark); }
+        .section-dark .about-card, .section-dark .service-card, .section-dark .package-card, .section-dark .portfolio-item, .section-dark .workflow-step, .section-dark .faq-item { background-color: var(--bg-dark-card); border-color: var(--border-dark); }
+        .section-dark .about-card p, .section-dark .service-card p, .section-dark .service-card .service-list li, .section-dark .package-card .package-desc, .section-dark .package-card .package-features li, .section-dark .portfolio-item .portfolio-content p, .section-dark .workflow-step p, .section-dark .faq-item p { color: var(--text-muted-dark); }
+        .section-dark .service-card .service-list li { color: var(--text-light); }
+        .about-card.visible, .service-card.visible, .package-card.visible, .portfolio-item.visible, .workflow-step.visible, .faq-item.visible { opacity: 1; transform: translateY(0); }
+        .about-card.visible:hover, .service-card.visible:hover, .package-card.visible:hover, .portfolio-item.visible:hover, .workflow-step.visible:hover, .faq-item.visible:hover { transform: translateY(-6px); border-color: var(--accent-purple); box-shadow: 0 15px 45px rgba(121, 91, 255, 0.22); }
+        .about-card h3, .service-card h3, .package-card .package-name, .portfolio-item h3, .workflow-step h3, .faq-item h3 { font-size: 21px; font-weight: 700; margin-bottom: 12px; }
+        .service-list { margin-bottom: 24px; }
+        .service-list li { position: relative; padding-left: 20px; margin-bottom: 9px; font-size: 14px; }
+        .service-list li::before { content: '•'; position: absolute; left: 0; color: var(--accent-purple); font-weight: bold; }
+        .service-price, .package-cost { font-weight: 700; color: var(--accent-purple); }
+        .service-price { font-size: 18px; }
+        
+        .package-card { display: flex; flex-direction: column; position: relative; }
+        .package-badge { position: absolute; top: -12px; right: 30px; background: var(--accent-purple); color: #fff; padding: 5px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 0 15px rgba(121, 91, 255, 0.5); }
+        .package-cost { font-size: 34px; font-weight: 800; margin-bottom: 24px; }
+        .package-features { flex-grow: 1; margin-bottom: 32px; }
+        .package-features li { font-size: 14px; margin-bottom: 12px; padding-left: 24px; position: relative; }
+        .package-features li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-purple); font-weight: bold; }
+        .section-light .package-card.featured { background: linear-gradient(180deg, rgba(121, 91, 255, 0.08) 0%, #FFFFFF 100%); border-color: var(--accent-purple); }
+        .section-dark .package-card.featured { background: linear-gradient(180deg, rgba(121, 91, 255, 0.18) 0%, var(--bg-dark-card) 100%); border-color: var(--accent-purple); box-shadow: 0 0 35px rgba(121, 91, 255, 0.25); }
+
+        .portfolio-item { overflow: hidden; padding: 0; }
+        .portfolio-img-placeholder { height: 230px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid inherit; transition: transform 0.5s ease; }
+        .portfolio-item:hover .portfolio-img-placeholder { transform: scale(1.04); }
+        .portfolio-content { padding: 26px; }
+        .portfolio-tag { font-size: 12px; font-weight: 600; color: var(--accent-purple); text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .workflow-num { font-size: 38px; font-weight: 800; margin-bottom: 16px; }
 
         /* CTA & Contacts */
-        .cta-section {
-            background: linear-gradient(135deg, #222238, #151524);
-            border-top: 1px solid var(--border-dark);
-            text-align: center;
-            padding: 110px 0;
-            position: relative;
-        }
+        .cta-section { background: linear-gradient(135deg, #222238, #151524); border-top: 1px solid var(--border-dark); text-align: center; padding: 110px 0; position: relative; }
+        .cta-box { max-width: 700px; margin: 0 auto; }
+        .cta-box h2 { font-size: clamp(36px, 5vw, 48px); font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
+        .cta-box p { font-size: 18px; color: var(--text-muted-dark); margin-bottom: 40px; }
+        .social-links { display: flex; justify-content: center; gap: 16px; margin-top: 30px; }
+        .social-btn { padding: 12px 24px; background: var(--bg-dark-card); border: 1px solid var(--border-dark); border-radius: 12px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; }
+        .social-btn:hover { border-color: var(--accent-purple); background: rgba(121, 91, 255, 0.2); transform: translateY(-2px); }
+        footer { border-top: 1px solid var(--border-dark); padding: 40px 0; text-align: center; font-size: 14px; color: var(--text-muted-dark); background: var(--bg-dark); }
 
-        .cta-box {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .cta-box h2 {
-            font-size: clamp(36px, 5vw, 48px);
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .cta-box p {
-            font-size: 18px;
-            color: var(--text-muted-dark);
-            margin-bottom: 40px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 30px;
-        }
-
-        .social-btn {
-            padding: 12px 24px;
-            background: var(--bg-dark-card);
-            border: 1px solid var(--border-dark);
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .social-btn:hover {
-            border-color: var(--accent-purple);
-            background: rgba(121, 91, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        footer {
-            border-top: 1px solid var(--border-dark);
-            padding: 40px 0;
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-muted-dark);
-            background: var(--bg-dark);
-        }
+        /* --- БОТ-ПОМОЩНИК (Стили) --- */
+        .chatbot-btn { position: fixed; bottom: 30px; right: 30px; width: 64px; height: 64px; background: var(--accent-purple); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 28px; cursor: pointer; box-shadow: 0 10px 30px rgba(121, 91, 255, 0.5); z-index: 9999; transition: all 0.3s ease; border: none; }
+        .chatbot-btn:hover { transform: scale(1.1); background: var(--accent-purple-hover); box-shadow: 0 15px 40px rgba(121, 91, 255, 0.7); }
+        
+        .chatbot-window { position: fixed; bottom: 110px; right: 30px; width: 340px; background: var(--bg-dark-card); border: 1px solid var(--border-dark); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 9998; opacity: 0; pointer-events: none; transform: translateY(20px); transition: all 0.3s ease; display: flex; flex-direction: column; max-height: 80vh; }
+        .chatbot-window.active { opacity: 1; pointer-events: all; transform: translateY(0); }
+        
+        .chatbot-header { background: var(--accent-purple); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .chatbot-title { font-family: 'Philosopher', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.2; }
+        .chatbot-subtitle { font-size: 12px; opacity: 0.8; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .chatbot-close { background: none; border: none; color: white; font-size: 24px; cursor: pointer; opacity: 0.8; transition: opacity 0.2s; }
+        .chatbot-close:hover { opacity: 1; }
+        
+        .chatbot-body { padding: 20px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--bg-dark); }
+        .chat-msg { padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.4; max-width: 85%; animation: msgPop 0.3s ease; }
+        .bot-msg { background: var(--bg-dark-card); color: var(--text-light); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border-dark); }
+        .user-msg { background: var(--accent-purple); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        @keyframes msgPop { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        .chatbot-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+        .chat-opt-btn { background: rgba(121, 91, 255, 0.1); border: 1px solid var(--border-dark); color: var(--accent-lavender); padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .chat-opt-btn:hover { background: var(--accent-purple); color: white; border-color: var(--accent-purple); }
+        .chat-opt-primary { border-color: var(--accent-lime); color: var(--accent-lime); background: rgba(200, 243, 107, 0.05); }
+        
+        /* Форма заявки в чате */
+        .chat-form { display: none; flex-direction: column; gap: 12px; background: var(--bg-dark-card); padding: 16px; border-radius: 16px; border: 1px solid var(--border-dark); margin-top: 8px; animation: msgPop 0.3s ease; }
+        .chat-form.active { display: flex; }
+        .chat-input { background: var(--bg-dark); border: 1px solid var(--border-dark); color: white; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; }
+        .chat-input:focus { border-color: var(--accent-purple); }
+        .chat-input::placeholder { color: var(--text-muted-dark); }
+        
+        /* Чекбокс конфиденциальности */
+        .privacy-wrap { display: flex; align-items: flex-start; gap: 8px; margin-top: 4px; }
+        .privacy-checkbox { mt-1; cursor: pointer; accent-color: var(--accent-purple); }
+        .privacy-label { font-size: 11px; color: var(--text-muted-dark); line-height: 1.3; }
+        .privacy-label a { color: var(--accent-lavender); text-decoration: underline; }
+        .privacy-label a:hover { color: var(--accent-lime); }
 
         @media (max-width: 968px) {
-            .hero-grid, .services-grid, .packages-grid, .about-grid, .portfolio-grid, .workflow-grid, .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            nav {
-                display: none;
-            }
+            .hero-grid, .services-grid, .packages-grid, .about-grid, .portfolio-grid, .workflow-grid, .faq-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+            .chatbot-window { width: calc(100% - 40px); right: 20px; bottom: 100px; }
         }
     </style>
 </head>
@@ -763,7 +211,6 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <!-- Тот самый текст с неоном и анимацией дорожки-салюта -->
                 <div class="hero-tag-wrap">
                     <div class="hero-tag-text">Независимая креативная студия</div>
                     <div class="firework-container">
@@ -787,10 +234,7 @@
     </section>
 
     <!-- Бегущая волна-разделитель 1 -->
-    <div class="wave-divider">
-        <div class="wave-line-1"></div>
-        <div class="wave-line-2"></div>
-    </div>
+    <div class="wave-divider"><div class="wave-line-1"></div><div class="wave-line-2"></div></div>
 
     <!-- About -->
     <section id="about" class="section-light">
@@ -817,10 +261,7 @@
     </section>
 
     <!-- Бегущая волна-разделитель 2 -->
-    <div class="wave-divider">
-        <div class="wave-line-1"></div>
-        <div class="wave-line-2"></div>
-    </div>
+    <div class="wave-divider"><div class="wave-line-1"></div><div class="wave-line-2"></div></div>
 
     <!-- Services -->
     <section id="services" class="section-dark">
@@ -867,9 +308,9 @@
                     <h3>AI-видео и ролики</h3>
                     <p>Короткие динамичные видеоматериалы для привлечения внимания в Reels и Shorts.</p>
                     <ul class="service-list">
-                        <li>Короткие рекламные ролики</li>
-                        <li>Видео для Reels / Shorts</li>
-                        <li>Анимированные визуалы и персонажи</li>
+                        <li>Короткие рекламные ролики (Reels / Shorts)</li>
+                        <li>Корпоративные длинные видео (YouTube)</li>
+                        <li>Анимированные визуалы и 3D-персонажи</li>
                     </ul>
                     <div class="service-price">от 5 000 ₽</div>
                 </div>
@@ -878,10 +319,7 @@
     </section>
 
     <!-- Бегущая волна-разделитель 3 -->
-    <div class="wave-divider">
-        <div class="wave-line-1"></div>
-        <div class="wave-line-2"></div>
-    </div>
+    <div class="wave-divider"><div class="wave-line-1"></div><div class="wave-line-2"></div></div>
 
     <!-- Pricing -->
     <section id="pricing" class="section-light">
@@ -901,7 +339,7 @@
                         <li>Подготовка файлов к публикации</li>
                         <li>2 раунда правок</li>
                     </ul>
-                    <a href="#contacts" class="btn btn-outline" style="width: 100%; border-color: #191927; color: #191927;">Выбрать START</a>
+                    <button class="btn btn-outline" onclick="openBotForm('Пакет START')" style="width: 100%; border-color: #191927; color: #191927;">Выбрать START</button>
                 </div>
                 <div class="package-card featured">
                     <div class="package-badge">Хит</div>
@@ -914,7 +352,7 @@
                         <li>3 Stories</li>
                         <li>Тексты к публикациям</li>
                     </ul>
-                    <a href="#contacts" class="btn btn-primary" style="width: 100%;">Выбрать CONTENT</a>
+                    <button class="btn btn-primary" onclick="openBotForm('Пакет CONTENT')" style="width: 100%;">Выбрать CONTENT</button>
                 </div>
                 <div class="package-card">
                     <div class="package-name">PRESENT</div>
@@ -926,19 +364,16 @@
                         <li>Визуальная концепция</li>
                         <li>Готовый PDF-файл</li>
                     </ul>
-                    <a href="#contacts" class="btn btn-outline" style="width: 100%; border-color: #191927; color: #191927;">Выбрать PRESENT</a>
+                    <button class="btn btn-outline" onclick="openBotForm('Пакет PRESENT')" style="width: 100%; border-color: #191927; color: #191927;">Выбрать PRESENT</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Бегущая волна-разделитель 4 -->
-    <div class="wave-divider">
-        <div class="wave-line-1"></div>
-        <div class="wave-line-2"></div>
-    </div>
+    <div class="wave-divider"><div class="wave-line-1"></div><div class="wave-line-2"></div></div>
 
-    <!-- Portfolio Concepts -->
+    <!-- Portfolio -->
     <section id="portfolio" class="section-dark">
         <div class="container">
             <div class="section-header">
@@ -975,10 +410,7 @@
     </section>
 
     <!-- Бегущая волна-разделитель 5 -->
-    <div class="wave-divider">
-        <div class="wave-line-1"></div>
-        <div class="wave-line-2"></div>
-    </div>
+    <div class="wave-divider"><div class="wave-line-1"></div><div class="wave-line-2"></div></div>
 
     <!-- Workflow -->
     <section id="workflow" class="section-light">
@@ -1006,17 +438,14 @@
                 <div class="workflow-step">
                     <div class="workflow-num">04</div>
                     <h3>Результат</h3>
-                    <p>Получаете финальную оплату 50% и передачу всех исходных файлов.</p>
+                    <p>Получаете финальную оплату 50% и передачу всех исходных файлов без водяных знаков.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Бегущая волна-разделитель 6 -->
-    <div class="wave-divider">
-        <div class="wave-line-1"></div>
-        <div class="wave-line-2"></div>
-    </div>
+    <div class="wave-divider"><div class="wave-line-1"></div><div class="wave-line-2"></div></div>
 
     <!-- FAQ -->
     <section id="faq" class="section-dark">
@@ -1028,7 +457,7 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <h3>Как сделать заказ?</h3>
-                    <p>Напишите нам в Telegram или любой удобный мессенджер. Мы обсудим задачу и зафиксируем детали.</p>
+                    <p>Напишите нам в Telegram или оставьте заявку на сайте. Мы обсудим задачу и зафиксируем детали.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Сколько времени занимает работа?</h3>
@@ -1036,7 +465,7 @@
                 </div>
                 <div class="faq-item">
                     <h3>Сколько правок входит в стоимость?</h3>
-                    <p>В стоимость каждого заказа включено 2 раунда правок в рамках первоначального технического задания.</p>
+                    <p>В стоимость каждого заказа включено 2 бесплатных раунда правок в рамках первоначального технического задания.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Какие материалы нужны от меня?</h3>
@@ -1046,12 +475,12 @@
         </div>
     </section>
 
-    <!-- CTA & Contacts -->
+    <!-- CTA -->
     <section id="contacts" class="cta-section">
         <div class="container cta-box">
             <h2>Есть идея? Давайте придадим ей форму.</h2>
             <p>Свяжитесь с нами, чтобы обсудить ваш проект и рассчитать точную стоимость.</p>
-            <a href="https://t.me/your_telegram" target="_blank" class="btn btn-primary" style="padding: 16px 36px; font-size: 16px;">Написать в Telegram</a>
+            <button class="btn btn-primary" onclick="openBotForm('Заявка с главного экрана')" style="padding: 16px 36px; font-size: 16px;">Оставить заявку</button>
             <div class="social-links">
                 <a href="https://t.me/your_telegram" target="_blank" class="social-btn">Telegram</a>
                 <a href="https://vk.com/your_vk" target="_blank" class="social-btn">ВКонтакте</a>
@@ -1063,49 +492,178 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 ИСКРА AI — Creative Studio. Все права защищены.</p>
+            <p>© 2026 ИСКРА AI — Creative Studio. Все права защищены. <br><a href="privacy.html" target="_blank" style="text-decoration: underline; margin-top: 8px; display: inline-block;">Политика конфиденциальности</a></p>
         </div>
     </footer>
 
-    <!-- Скрипт анимации (Срабатывает каждый раз при скролле) -->
+    <!-- ========================================== -->
+    <!-- ВИДЖЕТ БОТА-ПОМОЩНИКА -->
+    <!-- ========================================== -->
+    <button class="chatbot-btn" id="chatbot-toggle">💬</button>
+    
+    <div class="chatbot-window" id="chatbot-window">
+        <div class="chatbot-header">
+            <div>
+                <div class="chatbot-title">ИСКРА AI</div>
+                <div class="chatbot-subtitle">Онлайн-ассистент</div>
+            </div>
+            <button class="chatbot-close" id="chatbot-close">&times;</button>
+        </div>
+        
+        <div class="chatbot-body" id="chatbot-body">
+            <div class="chat-msg bot-msg">Привет! Я помощник студии. Что вас интересует? Выберите быстрый ответ или оставьте заявку:</div>
+            
+            <div class="chatbot-options" id="chatbot-options">
+                <button class="chat-opt-btn" onclick="sendChatReply('Как начать работу?', 'Всё просто: мы обсуждаем задачу, фиксируем ТЗ и предоплату 50%. После этого мы приступаем к генерации и сборке.')">Как начать работу?</button>
+                <button class="chat-opt-btn" onclick="sendChatReply('Какие гарантии?', 'Мы защищаем черновые видео водяными знаками. Вы платите оставшиеся 50% только после утверждения.')">Какие гарантии?</button>
+                <button class="chat-opt-btn" onclick="sendChatReply('Сроки работы?', 'Обычно от 2 до 4 рабочих дней в зависимости от сложности (длины видео или количества креативов).')">Сроки работы?</button>
+                <button class="chat-opt-btn chat-opt-primary" onclick="showLeadForm()">🚀 Оставить заявку на звонок</button>
+            </div>
+
+            <!-- Форма заявки -->
+            <form class="chat-form" id="lead-form">
+                <input type="text" id="lead-name" class="chat-input" placeholder="Ваше имя" required>
+                <input type="text" id="lead-contact" class="chat-input" placeholder="Телефон или Telegram" required>
+                <textarea id="lead-task" class="chat-input" placeholder="Какая услуга вас интересует?" rows="2" required></textarea>
+                
+                <div class="privacy-wrap">
+                    <input type="checkbox" id="privacy-agree" class="privacy-checkbox" required>
+                    <label for="privacy-agree" class="privacy-label">Я согласен с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> на обработку данных</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="padding: 10px; width: 100%;">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Скрипты -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            /* Скрипт анимации при скролле */
             const observer = new IntersectionObserver((entries) => {
                 let delayCount = 0;
-                
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        
-                        // Если это новый тег с салютом — включаем сразу
                         if (entry.target.classList.contains('hero-tag-wrap')) {
                             entry.target.classList.add("visible");
                         } else {
-                            // Для остальных карточек делаем каскад
                             entry.target.style.transitionDelay = `${delayCount * 0.15}s`;
                             entry.target.classList.add("visible");
                             delayCount++;
-                            
-                            setTimeout(() => {
-                                entry.target.style.transitionDelay = '0s';
-                            }, 1000);
+                            setTimeout(() => { entry.target.style.transitionDelay = '0s'; }, 1000);
                         }
-                        
                     } else {
-                        // Скрываем элемент, когда он уходит с экрана, чтобы при возвращении анимация проигралась заново
                         entry.target.classList.remove("visible");
                         if (!entry.target.classList.contains('hero-tag-wrap')) {
                             entry.target.style.transitionDelay = '0s';
                         }
                     }
                 });
-            }, { 
-                threshold: 0.1 
-            });
+            }, { threshold: 0.1 });
             
-            // Наблюдаем за тегом с салютом и всеми карточками
             document.querySelectorAll('.hero-tag-wrap, .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item').forEach((el) => {
                 observer.observe(el);
             });
+
+            /* ЛОГИКА ЧАТ-БОТА */
+            const chatToggle = document.getElementById('chatbot-toggle');
+            const chatWindow = document.getElementById('chatbot-window');
+            const chatClose = document.getElementById('chatbot-close');
+            const chatBody = document.getElementById('chatbot-body');
+            const chatOptions = document.getElementById('chatbot-options');
+            const leadForm = document.getElementById('lead-form');
+            const leadTaskInput = document.getElementById('lead-task');
+
+            chatToggle.addEventListener('click', () => { chatWindow.classList.toggle('active'); });
+            chatClose.addEventListener('click', () => { chatWindow.classList.remove('active'); });
+
+            window.openBotForm = function(taskText) {
+                chatWindow.classList.add('active');
+                showLeadForm();
+                leadTaskInput.value = taskText; 
+            };
+
+            window.sendChatReply = function(userText, botReply) {
+                chatOptions.style.display = 'none';
+                leadForm.classList.remove('active');
+                
+                chatBody.innerHTML += `<div class="chat-msg user-msg">${userText}</div>`;
+                scrollToBottom();
+                
+                setTimeout(() => {
+                    chatBody.innerHTML += `<div class="chat-msg bot-msg">${botReply}</div>`;
+                    chatBody.appendChild(chatOptions); 
+                    chatOptions.style.display = 'flex';
+                    scrollToBottom();
+                }, 600);
+            };
+
+            window.showLeadForm = function() {
+                chatOptions.style.display = 'none';
+                chatBody.innerHTML += `<div class="chat-msg user-msg">Оставить заявку</div>`;
+                scrollToBottom();
+                
+                setTimeout(() => {
+                    chatBody.innerHTML += `<div class="chat-msg bot-msg">Заполните данные, и я передам их режиссеру студии:</div>`;
+                    chatBody.appendChild(leadForm); 
+                    leadForm.classList.add('active');
+                    scrollToBottom();
+                }, 600);
+            };
+
+            /* === ИНТЕГРАЦИЯ С GOOGLE ТАБЛИЦАМИ === */
+            leadForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Меняем кнопку, чтобы показать процесс загрузки
+                const submitBtn = leadForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'Отправка...';
+                submitBtn.disabled = true;
+
+                // Собираем данные
+                const leadData = {
+                    name: document.getElementById('lead-name').value,
+                    contact: document.getElementById('lead-contact').value,
+                    task: document.getElementById('lead-task').value
+                };
+
+                // Вставляем твою рабочую ссылку-вебхук
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbxqTqQAInFDnxflRufpMC3h4vMJcNd9C8NQVVh7q5XNf1l2oMDmWbibKIucU7ySZ3-c/exec';
+
+                // Отправляем данные
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(leadData)
+                })
+                .then(response => {
+                    // В случае успеха
+                    leadForm.classList.remove('active');
+                    chatBody.innerHTML += `<div class="chat-msg bot-msg" style="border-color: var(--accent-lime); color: var(--accent-lime);">✅ Заявка успешно принята! Данные переданы режиссеру.</div>`;
+                    scrollToBottom();
+                    leadForm.reset();
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                    
+                    setTimeout(() => {
+                        chatBody.appendChild(chatOptions);
+                        chatOptions.style.display = 'flex';
+                        scrollToBottom();
+                    }, 4000);
+                })
+                .catch(error => {
+                    // Если произошла ошибка (например, пропал интернет)
+                    console.error('Ошибка!', error.message);
+                    chatBody.innerHTML += `<div class="chat-msg bot-msg" style="border-color: #ff5b5b; color: #ff5b5b;">❌ Ошибка сети. Пожалуйста, напишите нам напрямую через Telegram.</div>`;
+                    scrollToBottom();
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+            });
+
+            function scrollToBottom() {
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
         });
     </script>
 </body>
