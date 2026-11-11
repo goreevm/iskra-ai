@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИСКРА AI — Creative Studio | Превращаем идеи в визуальные решения</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #191927;
@@ -39,10 +39,6 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        h1, h2, h3, .logo-title, .hero-card-title, .package-name {
-            font-family: 'Unbounded', sans-serif !important;
         }
 
         a {
@@ -85,6 +81,7 @@
             text-decoration: none;
         }
         
+        /* Стили для нового прозрачного логотипа в шапке */
         .header__logo-img {
             height: 38px; 
             width: auto;
@@ -97,6 +94,7 @@
             transition: transform 0.2s ease;
         }
 
+        /* Эффект при наведении на логотип */
         .logo:hover .header__logo-img {
             transform: scale(1.05);
         }
@@ -111,7 +109,7 @@
         .logo-title {
             font-weight: 800;
             font-size: 18px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             color: #fff;
             line-height: 1.1;
         }
@@ -127,7 +125,6 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 2px;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
         }
 
         nav ul {
@@ -203,9 +200,9 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(42px, 5.5vw, 64px);
+            font-size: clamp(42px, 5.5vw, 68px);
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -1.5px;
         }
@@ -658,7 +655,8 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <img src="header-logo-Photoroom%20(2).png" alt="IA" class="header__logo-img">
+                <!-- Логотип прописан как logo-final.png -->
+                <img src="logo-final.png" alt="IA" class="header__logo-img">
                 <div class="logo-text-wrap">
                     <div class="logo-title">ИСКРА <span>AI</span></div>
                     <div class="logo-subtitle">Creative Studio</div>
