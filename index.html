@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИСКРА AI — Creative Studio | Превращаем идеи в визуальные решения</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Подключаем шрифты Plus Jakarta Sans и Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #191927;
@@ -39,6 +40,11 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Применяем футуристичный Space Grotesk ко всем заголовкам на сайте */
+        h1, h2, h3, .logo-title, .hero-card-title, .package-name {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         a {
@@ -81,7 +87,6 @@
             text-decoration: none;
         }
         
-        /* Стили для нового прозрачного логотипа в шапке */
         .header__logo-img {
             height: 38px; 
             width: auto;
@@ -94,7 +99,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* Эффект при наведении на логотип */
         .logo:hover .header__logo-img {
             transform: scale(1.05);
         }
@@ -107,7 +111,7 @@
         }
 
         .logo-title {
-            font-weight: 800;
+            font-weight: 700;
             font-size: 18px;
             letter-spacing: -0.5px;
             color: #fff;
@@ -125,6 +129,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 2px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         nav ul {
@@ -201,10 +206,10 @@
 
         .hero-content h1 {
             font-size: clamp(42px, 5.5vw, 68px);
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.1;
             margin-bottom: 24px;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
         }
 
         .hero-content h1 span {
@@ -326,7 +331,7 @@
 
         .section-header h2 {
             font-size: clamp(32px, 4vw, 44px);
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 16px;
             letter-spacing: -1px;
         }
@@ -596,7 +601,7 @@
 
         .cta-box h2 {
             font-size: clamp(36px, 5vw, 48px);
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -1px;
         }
@@ -655,8 +660,7 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <!-- Логотип прописан как logo-final.png -->
-                <img src="logo-final.png" alt="IA" class="header__logo-img">
+                <img src="header-logo-Photoroom (2).png" alt="IA" class="header__logo-img">
                 <div class="logo-text-wrap">
                     <div class="logo-title">ИСКРА <span>AI</span></div>
                     <div class="logo-subtitle">Creative Studio</div>
