@@ -260,51 +260,93 @@
             50% { transform: translateY(-18px); }
         }
 
-        /* --- САЛАТОВЫЙ ТЕГ (плавное появление текста и зажигание искры) --- */
-        .sparkle-tag {
+        /* --- НОВЫЙ ТЕГ С АНИМАЦИЕЙ ПОДЧЕРКИВАНИЯ И ИСКРЫ --- */
+        .hero-tag-wrap {
             display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(200, 243, 107, 0.12);
-            color: var(--accent-lime);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+            flex-direction: column;
+            align-items: flex-start;
             margin-bottom: 24px;
-            box-shadow: 0 0 20px rgba(200, 243, 107, 0.25);
-            border: 1px solid rgba(200, 243, 107, 0.3);
-            backdrop-filter: blur(5px);
+        }
+
+        .hero-tag-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-lime);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* Скрыт по умолчанию для анимации при скролле */
             opacity: 0;
-            animation: fadeTagBg 0.4s ease forwards;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .sparkle-text {
-            clip-path: inset(0 100% 0 0); /* Текст скрыт */
-            animation: revealText 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; /* Плавное проявление */
+        .hero-tag-wrap.visible .hero-tag-text {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .sparkle-icon {
+        .hero-tag-line-container {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            margin-top: 6px;
+        }
+
+        .hero-tag-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--accent-lime);
+            box-shadow: 0 0 8px var(--accent-lime);
+            width: 0;
+            border-radius: 2px;
+        }
+
+        .hero-tag-spark {
+            position: absolute;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px 5px var(--accent-lime);
+            transform: translateY(-50%) scale(0);
             opacity: 0;
-            transform: scale(0.5);
-            animation: popSparkle 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards; /* Зажигается в конце */
         }
 
-        @keyframes fadeTagBg { 
-            to { opacity: 1; } 
+        /* Анимации запускаются, когда скрипт добавляет класс visible при скролле */
+        .hero-tag-wrap.visible .hero-tag-line {
+            animation: drawAndVanish 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.3s;
         }
-        @keyframes revealText { 
-            to { clip-path: inset(0 0 0 0); } 
+
+        .hero-tag-wrap.visible .hero-tag-spark {
+            animation: sparkTravel 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.3s;
         }
-        @keyframes popSparkle { 
-            0% { opacity: 0; transform: scale(0.5) rotate(-20deg); } 
-            100% { opacity: 1; transform: scale(1) rotate(0); filter: drop-shadow(0 0 8px var(--accent-lime)); } 
+
+        @keyframes drawAndVanish {
+            0% { left: 0; width: 0; opacity: 1; }
+            30% { left: 0; width: 100%; opacity: 1; } /* Линия нарисовалась */
+            60% { left: 0; width: 100%; opacity: 1; } /* Держится */
+            85% { left: 100%; width: 0; opacity: 1; } /* Быстро сворачивается в точку справа */
+            100% { left: 100%; width: 0; opacity: 0; } /* Исчезает */
+        }
+
+        @keyframes sparkTravel {
+            0% { left: 0; opacity: 1; transform: translateY(-50%) scale(0.5); }
+            30% { left: 100%; opacity: 1; transform: translateY(-50%) scale(1); } /* Доехала до конца */
+            60% { left: 100%; opacity: 1; transform: translateY(-50%) scale(1.2); } /* Ждет */
+            85% { left: 100%; opacity: 1; transform: translateY(-50%) scale(2.5); } /* Разгорается, вбирая в себя линию */
+            95% { left: 100%; opacity: 0; transform: translateY(-50%) scale(3.5); filter: blur(2px); } /* Вспыхивает и гаснет */
+            100% { left: 100%; opacity: 0; transform: translateY(-50%) scale(0); }
         }
 
         /* --- БЕГУЩИЕ ВОЛНЫ (увеличена амплитуда по высоте) --- */
         .wave-divider {
             width: 100%;
-            height: 100px; /* Увеличено пространство для размаха */
+            height: 100px;
             background-color: var(--bg-dark);
             border-top: 1px solid var(--border-dark);
             border-bottom: 1px solid var(--border-dark);
@@ -320,7 +362,6 @@
             left: 0;
             width: 200%;
             height: 100%;
-            /* Размах кривой от 0 до 100 */
             background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 Q100,100 200,50 T400,50' fill='none' stroke='%23795BFF' stroke-width='4'/%3E%3C/svg%3E") repeat-x;
             background-size: 400px 100%;
             animation: runWave 4s linear infinite;
@@ -332,7 +373,6 @@
             left: 0;
             width: 200%;
             height: 100%;
-            /* Размах кривой от 100 до 0 */
             background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 Q100,0 200,50 T400,50' fill='none' stroke='%23C8F36B' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
             background-size: 400px 100%;
             animation: runWave 5s linear infinite reverse;
@@ -726,11 +766,15 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <!-- Измененный тег: текст отдельно, искра отдельно -->
-                <div class="sparkle-tag">
-                    <span class="sparkle-text">Независимая креативная студия</span>
-                    <span class="sparkle-icon">✨</span>
+                <!-- Тот самый текст с подчеркиванием и искрой -->
+                <div class="hero-tag-wrap">
+                    <div class="hero-tag-text">Независимая креативная студия</div>
+                    <div class="hero-tag-line-container">
+                        <div class="hero-tag-line"></div>
+                        <div class="hero-tag-spark"></div>
+                    </div>
                 </div>
+                
                 <h1>Идеи обретают <span>форму</span></h1>
                 <p class="hero-subtitle">Превращаем идеи в качественные визуальные материалы, рекламные креативы, презентации и контент для продвижения с помощью современных инструментов дизайна и искусственного интеллекта.</p>
                 <div class="hero-buttons">
@@ -1026,7 +1070,7 @@
         </div>
     </footer>
 
-    <!-- Обновленный скрипт анимации: работает постоянно при любом скролле -->
+    <!-- Скрипт анимации (Срабатывает каждый раз при скролле) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const observer = new IntersectionObserver((entries) => {
@@ -1034,27 +1078,35 @@
                 
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Карточка появилась на экране
-                        entry.target.style.transitionDelay = `${delayCount * 0.15}s`;
-                        entry.target.classList.add("visible");
-                        delayCount++;
                         
-                        // Сбрасываем задержку после анимации, чтобы эффекты наведения не тормозили
-                        setTimeout(() => {
-                            entry.target.style.transitionDelay = '0s';
-                        }, 1000);
+                        // Если это наш новый текстовый тег с искрой — включаем без задержки
+                        if (entry.target.classList.contains('hero-tag-wrap')) {
+                            entry.target.classList.add("visible");
+                        } else {
+                            // Для остальных карточек делаем красивый каскад
+                            entry.target.style.transitionDelay = `${delayCount * 0.15}s`;
+                            entry.target.classList.add("visible");
+                            delayCount++;
+                            
+                            setTimeout(() => {
+                                entry.target.style.transitionDelay = '0s';
+                            }, 1000);
+                        }
                         
                     } else {
-                        // Карточка ушла с экрана — прячем её, чтобы она снова всплыла при скролле
+                        // Скрываем элемент, когда он уходит с экрана (чтобы анимация повторилась)
                         entry.target.classList.remove("visible");
-                        entry.target.style.transitionDelay = '0s';
+                        if (!entry.target.classList.contains('hero-tag-wrap')) {
+                            entry.target.style.transitionDelay = '0s';
+                        }
                     }
                 });
             }, { 
-                threshold: 0.1 // Срабатывает, когда показано 10% карточки
+                threshold: 0.1 
             });
             
-            document.querySelectorAll('.about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item').forEach((el) => {
+            // Наблюдаем за тегом и всеми карточками
+            document.querySelectorAll('.hero-tag-wrap, .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item').forEach((el) => {
                 observer.observe(el);
             });
         });
