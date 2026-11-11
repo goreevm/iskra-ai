@@ -260,7 +260,7 @@
             50% { transform: translateY(-18px); }
         }
 
-        /* --- НОВЫЙ ТЕГ С АНИМАЦИЕЙ ПОДЧЕРКИВАНИЯ И ИСКРЫ --- */
+        /* --- ТЕГ-НЕОН С САЛЮТОМ --- */
         .hero-tag-wrap {
             display: inline-flex;
             flex-direction: column;
@@ -269,15 +269,15 @@
         }
 
         .hero-tag-text {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 700;
             color: var(--accent-lime);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            /* Скрыт по умолчанию для анимации при скролле */
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(200, 243, 107, 0.6); /* Неоновое свечение самого текста */
             opacity: 0;
             transform: translateY(15px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .hero-tag-wrap.visible .hero-tag-text {
@@ -285,68 +285,69 @@
             transform: translateY(0);
         }
 
-        .hero-tag-line-container {
+        .firework-container {
             position: relative;
             width: 100%;
-            height: 2px;
-            margin-top: 6px;
+            height: 15px;
+            margin-top: 4px;
         }
 
-        .hero-tag-line {
+        /* Дорожка из точек */
+        .firework-trail {
             position: absolute;
             left: 0;
-            top: 0;
-            height: 100%;
-            background: var(--accent-lime);
-            box-shadow: 0 0 8px var(--accent-lime);
-            width: 0;
-            border-radius: 2px;
-        }
-
-        .hero-tag-spark {
-            position: absolute;
             top: 50%;
-            width: 6px;
-            height: 6px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 12px 5px var(--accent-lime);
-            transform: translateY(-50%) scale(0);
+            transform: translateY(-50%);
+            height: 4px;
+            background-image: radial-gradient(circle, var(--accent-lime) 2px, transparent 2px);
+            background-size: 12px 12px;
+            background-position: left center;
+            width: 0;
             opacity: 0;
         }
 
-        /* Анимации запускаются, когда скрипт добавляет класс visible при скролле */
-        .hero-tag-wrap.visible .hero-tag-line {
-            animation: drawAndVanish 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.3s;
+        .hero-tag-wrap.visible .firework-trail {
+            animation: trailAnimate 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s; 
         }
 
-        .hero-tag-wrap.visible .hero-tag-spark {
-            animation: sparkTravel 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.3s;
+        @keyframes trailAnimate {
+            0% { width: 0%; opacity: 0; margin-left: 0; }
+            20% { width: 100%; opacity: 1; margin-left: 0; } /* Дорожка пробегает вправо */
+            60% { width: 100%; opacity: 1; margin-left: 0; } /* Держится под текстом */
+            85% { width: 4px; opacity: 1; margin-left: calc(100% - 4px); } /* Резко стягивается в одну точку справа */
+            100% { width: 4px; opacity: 0; margin-left: calc(100% - 4px); }
         }
 
-        @keyframes drawAndVanish {
-            0% { left: 0; width: 0; opacity: 1; }
-            30% { left: 0; width: 100%; opacity: 1; } /* Линия нарисовалась */
-            60% { left: 0; width: 100%; opacity: 1; } /* Держится */
-            85% { left: 100%; width: 0; opacity: 1; } /* Быстро сворачивается в точку справа */
-            100% { left: 100%; width: 0; opacity: 0; } /* Исчезает */
+        /* Вспышка (салют) */
+        .firework-bang {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 0 15px 5px var(--accent-lime), 0 0 30px 10px var(--accent-lime);
+            opacity: 0;
+            transform: translateY(-50%) scale(0);
         }
 
-        @keyframes sparkTravel {
-            0% { left: 0; opacity: 1; transform: translateY(-50%) scale(0.5); }
-            30% { left: 100%; opacity: 1; transform: translateY(-50%) scale(1); } /* Доехала до конца */
-            60% { left: 100%; opacity: 1; transform: translateY(-50%) scale(1.2); } /* Ждет */
-            85% { left: 100%; opacity: 1; transform: translateY(-50%) scale(2.5); } /* Разгорается, вбирая в себя линию */
-            95% { left: 100%; opacity: 0; transform: translateY(-50%) scale(3.5); filter: blur(2px); } /* Вспыхивает и гаснет */
-            100% { left: 100%; opacity: 0; transform: translateY(-50%) scale(0); }
+        .hero-tag-wrap.visible .firework-bang {
+            animation: bangAnimate 0.6s ease-out forwards;
+            animation-delay: 1.85s; /* Зажигается ровно в тот момент, когда дорожка стянулась в точку */
         }
 
-        /* --- БЕГУЩИЕ ВОЛНЫ (увеличена амплитуда по высоте) --- */
+        @keyframes bangAnimate {
+            0% { transform: translateY(-50%) scale(0.5); opacity: 1; }
+            40% { transform: translateY(-50%) scale(2.5); opacity: 1; }
+            100% { transform: translateY(-50%) scale(4); opacity: 0; filter: blur(4px); }
+        }
+
+        /* --- БЕГУЩИЕ ВОЛНЫ --- */
         .wave-divider {
             width: 100%;
-            height: 100px;
+            height: 120px; 
             background-color: var(--bg-dark);
             border-top: 1px solid var(--border-dark);
             border-bottom: 1px solid var(--border-dark);
@@ -362,7 +363,7 @@
             left: 0;
             width: 200%;
             height: 100%;
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 Q100,100 200,50 T400,50' fill='none' stroke='%23795BFF' stroke-width='4'/%3E%3C/svg%3E") repeat-x;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 Q100,120 200,60 T400,60' fill='none' stroke='%23795BFF' stroke-width='4'/%3E%3C/svg%3E") repeat-x;
             background-size: 400px 100%;
             animation: runWave 4s linear infinite;
             filter: drop-shadow(0 0 8px #795BFF);
@@ -373,7 +374,7 @@
             left: 0;
             width: 200%;
             height: 100%;
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 Q100,0 200,50 T400,50' fill='none' stroke='%23C8F36B' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 Q100,0 200,60 T400,60' fill='none' stroke='%23C8F36B' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
             background-size: 400px 100%;
             animation: runWave 5s linear infinite reverse;
             filter: drop-shadow(0 0 8px #C8F36B);
@@ -518,30 +519,26 @@
             gap: 20px;
         }
 
-        /* --- КАРТОЧКИ (Плавное появление при КАЖДОМ скролле) --- */
+        /* --- КАРТОЧКИ --- */
         .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item {
             border: 1px solid;
             border-radius: 22px;
             padding: 34px;
             
-            /* Скрыты по умолчанию для анимации */
             opacity: 0;
             transform: translateY(40px);
             
-            /* Транзиции для скролла и ховера */
             transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
                         transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
                         border-color 0.35s ease, 
                         box-shadow 0.35s ease;
         }
 
-        /* Класс visible добавляется когда карточка на экране */
         .about-card.visible, .service-card.visible, .package-card.visible, .portfolio-item.visible, .workflow-step.visible, .faq-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Эффект наведения работает только на активных карточках */
         .about-card.visible:hover, .service-card.visible:hover, .package-card.visible:hover, .portfolio-item.visible:hover, .workflow-step.visible:hover, .faq-item.visible:hover {
             transform: translateY(-6px);
             border-color: var(--accent-purple);
@@ -766,12 +763,12 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <!-- Тот самый текст с подчеркиванием и искрой -->
+                <!-- Тот самый текст с неоном и анимацией дорожки-салюта -->
                 <div class="hero-tag-wrap">
                     <div class="hero-tag-text">Независимая креативная студия</div>
-                    <div class="hero-tag-line-container">
-                        <div class="hero-tag-line"></div>
-                        <div class="hero-tag-spark"></div>
+                    <div class="firework-container">
+                        <div class="firework-trail"></div>
+                        <div class="firework-bang"></div>
                     </div>
                 </div>
                 
@@ -1079,11 +1076,11 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         
-                        // Если это наш новый текстовый тег с искрой — включаем без задержки
+                        // Если это новый тег с салютом — включаем сразу
                         if (entry.target.classList.contains('hero-tag-wrap')) {
                             entry.target.classList.add("visible");
                         } else {
-                            // Для остальных карточек делаем красивый каскад
+                            // Для остальных карточек делаем каскад
                             entry.target.style.transitionDelay = `${delayCount * 0.15}s`;
                             entry.target.classList.add("visible");
                             delayCount++;
@@ -1094,7 +1091,7 @@
                         }
                         
                     } else {
-                        // Скрываем элемент, когда он уходит с экрана (чтобы анимация повторилась)
+                        // Скрываем элемент, когда он уходит с экрана, чтобы при возвращении анимация проигралась заново
                         entry.target.classList.remove("visible");
                         if (!entry.target.classList.contains('hero-tag-wrap')) {
                             entry.target.style.transitionDelay = '0s';
@@ -1105,7 +1102,7 @@
                 threshold: 0.1 
             });
             
-            // Наблюдаем за тегом и всеми карточками
+            // Наблюдаем за тегом с салютом и всеми карточками
             document.querySelectorAll('.hero-tag-wrap, .about-card, .service-card, .package-card, .portfolio-item, .workflow-step, .faq-item').forEach((el) => {
                 observer.observe(el);
             });
